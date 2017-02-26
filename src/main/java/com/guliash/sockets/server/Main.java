@@ -50,12 +50,10 @@ public class Main {
 
         @Override
         public void run() {
-
             try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                 PrintWriter out = new PrintWriter(socket.getOutputStream())) {
+                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
                 String command;
                 while ((command = in.readLine()) != null) {
-                    System.out.println(command);
                     if (command.equalsIgnoreCase(Command.HELLO.getCommand())) {
                         out.println(Command.HELLO.getResponse());
                     } else if(command.equalsIgnoreCase(Command.PRIME.getCommand())) {
